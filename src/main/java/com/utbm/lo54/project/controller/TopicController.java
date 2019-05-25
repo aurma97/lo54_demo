@@ -1,7 +1,8 @@
-package com.utbm.lo54.project.topic;
+package com.utbm.lo54.project.controller;
 
+import com.utbm.lo54.project.entity.Topic;
+import com.utbm.lo54.project.service.*;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;

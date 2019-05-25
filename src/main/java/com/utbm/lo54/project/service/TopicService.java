@@ -1,9 +1,11 @@
-package com.utbm.lo54.project.topic;
+package com.utbm.lo54.project.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
+
+import com.utbm.lo54.project.entity.Topic;
+import com.utbm.lo54.project.repository.TopicRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

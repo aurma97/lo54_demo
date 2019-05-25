@@ -1,4 +1,4 @@
-package com.utbm.lo54.project.topic;
+package com.utbm.lo54.project.entity;
 
 import java.util.Objects;
 
