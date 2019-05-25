@@ -1,4 +1,4 @@
-package com.utbm.lo54.topic;
+package com.utbm.lo54.project.topic;
 
 import org.springframework.data.repository.CrudRepository;
 

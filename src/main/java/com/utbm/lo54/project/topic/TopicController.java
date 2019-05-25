@@ -1,4 +1,4 @@
-package com.utbm.lo54.topic;
+package com.utbm.lo54.project.topic;
 
 import java.util.List;
 
@@ -28,4 +28,15 @@ public class TopicController {
     public void addTopic(@RequestBody Topic topic) {
         topicService.addTopic(topic);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, value = "/topics/{id}")
+    public void updateTopic(@RequestBody Topic topic) {
+        topicService.updateTopic(topic);
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/topics/{id}")
+    public void deleteTopic(@PathVariable String id) {
+        topicService.deleteTopic(id);
+    }
+
 }
