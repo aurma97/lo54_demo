@@ -23,15 +23,18 @@ public class CourseSession {
     private Integer max;
     
     @ManyToOne
-    @JoinColumn(name="course_id")
-    @JsonIgnore
+    @JoinColumn(name="course_id", nullable=false)
+
     private Course course;
    
     @ManyToOne
-    @JoinColumn(name="location_id")
-    @JsonIgnore
+    @JoinColumn(name="location_id", nullable=false)
+
     private Location location;
     
+    public CourseSession() {
+    	
+    }
 	public CourseSession(Date startDate, Date endDate, Integer max, Course course, Location location) {
 		this.startDate = startDate;
 		this.endDate = endDate;
