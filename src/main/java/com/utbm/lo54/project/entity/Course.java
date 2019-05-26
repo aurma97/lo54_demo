@@ -1,71 +1,58 @@
 package com.utbm.lo54.project.entity;
 
-import java.util.Objects;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 @Entity
 public class Course {
 
-    @Id
-    private String id;
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable=false)
     private String title;
-
+    
+    @OneToMany(mappedBy = "course")
+    Set<CourseSession> courseSession;
+    
     public Course() {
-
+    	
     }
+    
+	public Course(Integer id, String title) {
+		this.id = id;
+		this.title = title;
+	}
 
-    public Course(String id, String title) {
-        this.id = id;
-        this.title = title;
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return this.title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Course id(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public Course title(String title) {
-        this.title = title;
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Course)) {
-            return false;
-        }
-        Course course = (Course) o;
-        return Objects.equals(id, course.id) && Objects.equals(title, course.title);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, title);
-    }
-
-    @Override
-    public String toString() {
-        return "{" + " id='" + getId() + "'" + ", title='" + getTitle() + "'" + "}";
-    }
-
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+	
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+    
+   
 }

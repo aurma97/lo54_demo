@@ -1,71 +1,57 @@
 package com.utbm.lo54.project.entity;
 
-import java.util.Objects;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Location {
 
-    @Id
-    private String id;
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private Integer id;
+	
+    @Column(nullable=false)
     private String city;
-
+    
+    @OneToMany(mappedBy = "location")
+    Set<CourseSession> courseSession;
+    
     public Location() {
-
+    	
     }
+    
+	public Location(Integer id, String city) {
+		this.id = id;
+		this.city = city;
+	}
 
-    public Location(String id, String city) {
-        this.id = id;
-        this.city = city;
-    }
+	/**
+	 * @return the id
+	 */
+	public Integer getId() {
+		return id;
+	}
+	
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	
+	/**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getCity() {
-        return this.city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public Location id(String id) {
-        this.id = id;
-        return this;
-    }
-
-    public Location city(String city) {
-        this.city = city;
-        return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof Location)) {
-            return false;
-        }
-        Location location = (Location) o;
-        return Objects.equals(id, location.id) && Objects.equals(city, location.city);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, city);
-    }
-
-    @Override
-    public String toString() {
-        return "{" + " id='" + getId() + "'" + ", city='" + getCity() + "'" + "}";
-    }
 
 }

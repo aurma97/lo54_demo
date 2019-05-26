@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Sat May 25 04:00:45 CEST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016a-ecb8-0962-000009810800 
-on database directory memory:/home/aurma/Documents/project/testdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@8bcc55f 
+Sun May 26 01:15:46 CEST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016a-f147-5a54-000004d66df0 
+on database directory memory:/home/aurma/Documents/project/testdb with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@49476842 
 Loaded from file:/home/aurma/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=11.0.3+7-Ubuntu-1ubuntu218.04.1
