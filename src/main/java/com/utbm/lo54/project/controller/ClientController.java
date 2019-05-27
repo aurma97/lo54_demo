@@ -3,6 +3,9 @@ package com.utbm.lo54.project.controller;
 import com.utbm.lo54.project.entity.*;
 import com.utbm.lo54.project.service.*;
 import java.util.List;
+
+import javax.mail.MessagingException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -40,8 +43,12 @@ public class ClientController {
         	try {
         		notificationService.sendNotification(client);
         	}catch(MailException e) {
+        		e.printStackTrace();
         		System.out.println(e.getMessage());
-        	}
+        	} catch (MessagingException e) {
+				e.printStackTrace();
+				System.out.println(e.getMessage());
+			}
         }
     }
 
