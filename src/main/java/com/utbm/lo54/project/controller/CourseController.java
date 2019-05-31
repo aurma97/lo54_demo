@@ -12,9 +12,10 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @RequestMapping("/courses")
-    public List<Course> getAllCourses() {
-        return courseService.getAllCourses();
+    @GetMapping("/courses")
+    public String getAllCourses() {
+    	//List<Course> courses =  courseService.getAllCourses();
+    	return "views/index";
     }
 
     @RequestMapping("/courses/{id}")
