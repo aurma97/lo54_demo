@@ -6,17 +6,33 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/courses")
-    public String getAllCourses() {
-    	//List<Course> courses =  courseService.getAllCourses();
-    	return "views/index";
+    @RequestMapping("/courses")
+    public ModelAndView getAllCourses() {
+    	List<Course> courses =  courseService.getAllCourses();
+    	String course = "Mon cours";
+    	ModelAndView modelAndView = new ModelAndView("index");
+    	
+    	modelAndView.addObject("course", course);
+    	modelAndView.addObject("courses",courses);
+    	return modelAndView;
     }
+    
+////    public String getAllCourses(Model model) {
+//    	List<Course> courses =  courseService.getAllCourses();
+//    	String course = "Mon cours";
+//    	model.addAttribute("name", course);
+////    	ModelAndView modelAndView = new ModelAndView("index");
+////    	modelAndView.addObject(course);
+////    	modelAndView.addObject(courses);
+//    	return "index";
+//    }
 
     @RequestMapping("/courses/{id}")
     public Course getCourse(@PathVariable Integer id) {
