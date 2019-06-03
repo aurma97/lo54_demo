@@ -20,14 +20,17 @@
     <th scope="row">Start Date</th>
     <th scope="row">End Date</th>
     <th scope="row">Max</th>
+    <th scope="row">Location</th>
     <th scope="row">Apply</th>
    </thead>
    <tbody>
     <c:forEach items="${sessions}" var="session" >
      <tr>
-      <td>${session.startDate}</td>
-      <td>${session.endDate}</td>
-      <td>${session.max}</td>
+     <td>${session.getCourse().getTitle()}</td>
+      <td>${session.getStartDate()}</td>
+      <td>${session.getEndDate()}</td>
+      <td>${session.getMax()}</td>
+      <td>${session.getLocation().getCity()}</td>
       <td>
        <spring:url value="/courses/updateCourse/${session.id }" var="updateURL" />
        <a class="btn btn-primary" href="${updateURL }" role="button" >Apply</a>
