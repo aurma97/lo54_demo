@@ -14,6 +14,7 @@
 <body>
  <div class="container">
   <h2>Session List</h2>
+  <input class="form-control" id="filter" type="text" placeholder="Filter by date..">
   <table class="table table-striped">
    <thead>
    	<th scope="row">Course Title</th>

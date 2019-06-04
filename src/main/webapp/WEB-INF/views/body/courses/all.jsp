@@ -23,20 +23,20 @@
    <tbody>
     <c:forEach items="${courses}" var="course" >
      <tr>
-      <td>${course.title}</td>
+      <td>${course.getTitle()}</td>
       <td>
-       <spring:url value="/courses/updateCourse/${course.id }" var="updateURL" />
+       <spring:url value="/courses/updateCourse/${course.getId() }" var="updateURL" />
        <a class="btn btn-primary" href="${updateURL }" role="button" >Update</a>
       </td>
       <td>
-       <spring:url value="/courses/deleteCourse/${course.id }" var="deleteURL" />
+       <spring:url value="/courses/deleteCourse/${course.getId() }" var="deleteURL" />
        <a class="btn btn-danger" href="${deleteURL }" role="button" >Delete</a>
       </td>
      </tr>
     </c:forEach>
    </tbody>
   </table>
-  <spring:url value="/course/addCourse/" var="addURL" />
+  <spring:url value="/courses/vueAdd/" var="addURL" />
   <a class="btn btn-success" href="${addURL }" role="button" >Add New Course</a>
  </div>
 </body>
