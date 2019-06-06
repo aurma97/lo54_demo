@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class ClientController {
@@ -33,8 +34,8 @@ public class ClientController {
         return clientService.getClient(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/client/{courseSessionId}/session/")
-    public void addClient(@RequestBody Client client, @PathVariable Integer courseSessionId) {
+    @RequestMapping(method = RequestMethod.POST, value = "/clients/{courseSessionId}/addClient")
+    public ModelAndView addClient(@ModelAttribute("clientForm") Client client, @PathVariable Integer courseSessionId) {
     	
     	client.setCourseSession(courseSessionService.getCourseSession(courseSessionId));
         clientService.addClient(client);
@@ -50,6 +51,7 @@ public class ClientController {
 				System.out.println(e.getMessage());
 			}
         }
+        return new ModelAndView("redirect:/sessions");
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/client/{courseSessionId}/session/{id}")

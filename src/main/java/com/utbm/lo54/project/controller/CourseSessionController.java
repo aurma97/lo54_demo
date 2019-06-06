@@ -5,6 +5,7 @@ import com.utbm.lo54.project.service.*;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 @RestController
 public class CourseSessionController {
@@ -18,8 +19,12 @@ public class CourseSessionController {
     private LocationService locationService;
     
     @RequestMapping("/courseSession")
-    public List<CourseSession> getAllCourseSessions() {
-        return courseSessionService.getAllCoursesSession();
+    public  ModelAndView getAllCourseSessions() {
+    	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
+    	//Envoi de toutes les sessions à la vue sessions/all
+    	ModelAndView model = new ModelAndView("body/sessions/all");
+    	model.addObject("sessions", sessions);
+    	return model;
     }
 
     @RequestMapping("/courseSession/{id}")
@@ -49,5 +54,15 @@ public class CourseSessionController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/courseSession/{id}")
     public void deleteCourseSession(@PathVariable Integer id) {
         courseSessionService.deleteCourseSession(id);
+    }
+    
+    //Renvoit vers le formulaire de création d'un nouveau client avec l'id de la session
+    @RequestMapping(method = RequestMethod.GET, value ="/client/applySession/{id}")
+    public ModelAndView applySession(@PathVariable Integer id) {
+    	CourseSession courseSession = courseSessionService.getCourseSession(id);
+    	ModelAndView model = new ModelAndView("body/clients/add");
+    	model.addObject("sessionForm", courseSession);
+    	
+    	return model;
     }
 }

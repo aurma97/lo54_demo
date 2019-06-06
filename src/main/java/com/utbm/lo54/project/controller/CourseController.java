@@ -16,41 +16,49 @@ public class CourseController {
     @RequestMapping("/courses")
     public ModelAndView getAllCourses() {
     	List<Course> courses =  courseService.getAllCourses();
-    	String course = "Mon cours";
-    	ModelAndView modelAndView = new ModelAndView("index");
     	
-    	modelAndView.addObject("course", course);
-    	modelAndView.addObject("courses",courses);
-    	return modelAndView;
+    	//Envoi de tous les cours à la vue
+    	ModelAndView model = new ModelAndView("body/courses/all");
+    	model.addObject("courses", courses);
+    	return model;
+
     }
-    
-////    public String getAllCourses(Model model) {
-//    	List<Course> courses =  courseService.getAllCourses();
-//    	String course = "Mon cours";
-//    	model.addAttribute("name", course);
-////    	ModelAndView modelAndView = new ModelAndView("index");
-////    	modelAndView.addObject(course);
-////    	modelAndView.addObject(courses);
-//    	return "index";
-//    }
 
     @RequestMapping("/courses/{id}")
     public Course getCourse(@PathVariable Integer id) {
         return courseService.getCourse(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/courses")
-    public void addCourse(@RequestBody Course course) {
+    @RequestMapping(method = RequestMethod.POST, value = "/courses/addCourse")
+    public ModelAndView addCourse(@ModelAttribute("courseForm") Course course) {
         courseService.addCourse(course);
+        //rédiriger vers la page de toutes les courses
+        return new ModelAndView("redirect:/courses");
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/courses/{id}")
-    public void updateCourse(@RequestBody Course course) {
-        courseService.updateCourse(course);
+    @RequestMapping(method = RequestMethod.GET, value = "/courses/updateCourse/{id}")
+    public ModelAndView updateCourse(@PathVariable Integer id) {
+    	
+        //courseService.updateCourse(course);
+        Course course = courseService.getCourse(id);
+        ModelAndView model = new ModelAndView("body/courses/add");
+    	model.addObject("courseForm", course);
+    	return model;
+
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/courses/{id}")
-    public void deleteCourse(@PathVariable Integer id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/courses/deleteCourse/{id}")
+    public ModelAndView deleteCourse(@PathVariable Integer id) {
         courseService.deleteCourse(id);
+        return new ModelAndView("redirect:/courses");
+    }
+    
+    //Méthode qui renvoit la vue vers le formulaire d'ajout
+    @RequestMapping(method = RequestMethod.GET, value = "/courses/vueAddCourse/")
+    public ModelAndView vueAdd() {
+    	ModelAndView model = new ModelAndView("body/courses/add");
+    	Course course = new Course();
+    	model.addObject("courseForm", course);
+    	return model;
     }
 }
