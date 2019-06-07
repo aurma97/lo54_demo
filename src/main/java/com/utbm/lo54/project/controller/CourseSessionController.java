@@ -22,7 +22,7 @@ public class CourseSessionController {
     private LocationService locationService;
     
     @RequestMapping("/courseSession")
-    public List<CourseSession> getAllCourseSessions() {
+    public ModelAndView getAllCourseSessions() {
     	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
     	
     	for(CourseSession session : sessions) {
@@ -35,7 +35,7 @@ public class CourseSessionController {
     	//Envoi de toutes les sessions à la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
-    	return sessions;
+    	return model;
     }
 
     @RequestMapping("/courseSession/{id}")
