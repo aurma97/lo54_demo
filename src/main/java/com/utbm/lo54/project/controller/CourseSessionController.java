@@ -65,4 +65,16 @@ public class CourseSessionController {
     	
     	return model;
     }
+  //Méthode qui renvoit la vue vers le formulaire d'ajout de la sessioin
+    @RequestMapping(method = RequestMethod.GET, value = "/courses/vueAddSession/")
+    public ModelAndView vueAddSession() {
+    	ModelAndView model = new ModelAndView("body/sessions/add");
+    	List<Course> courses = courseService.getAllCourses();
+    	List<Location> locations = locationService.getAllLocations();
+    	//CourseSession courseSessionForm = new CourseSession();
+    	//model.addObject("courseSessionForm", courseSessionForm);
+    	model.addObject("courses", courses);
+    	model.addObject("locations", locations);
+    	return model;
+    }
 }

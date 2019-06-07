@@ -34,7 +34,7 @@
 	   			</c:forEach>
 	   		</tbody>
 	  	</table>
-	  	< spring:url value="/courseSession/vueAddSession/" var="addURL" />
+	  	<spring:url value="/courseSession/vueAddSession/" var="addURL" />
 	  	<a class="btn btn-success" href="${addURL }" role="button" >Add New Session</a>
       </div>
     </div>

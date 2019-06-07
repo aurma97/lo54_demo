@@ -17,7 +17,7 @@
 		      </td>
 		      <td>
 		       <spring:url value="/courses/deleteCourse/${course.getId()}" var="deleteURL" />
-		       <a class="btn btn-danger" href="${deleteURL}" role="button" >Delete</a>
+		       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" >Delete</a>
 		      </td>
 		     </tr>
 		    </c:forEach>
