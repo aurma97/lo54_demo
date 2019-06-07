@@ -32,7 +32,7 @@ public class LocationController {
     	return new ModelAndView("redirect:/locations");
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/locations/updateLocation/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/locations/updateLocation/{id}")
     public ModelAndView updateLocation(@PathVariable Integer id) {
     	//locationService.updateLocation(location);
     	Location location = locationService.getLocation(id);
@@ -42,7 +42,7 @@ public class LocationController {
     	
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/locations/deleteLocation/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/locations/deleteLocation/{id}")
     public ModelAndView deleteLocation(@PathVariable Integer id) {
     	locationService.deleteLocation(id);
     	return new ModelAndView("redirect:/locations");

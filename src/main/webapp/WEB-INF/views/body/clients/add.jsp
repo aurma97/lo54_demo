@@ -1,7 +1,6 @@
 <%@ include file="../../header/header.jsp"%>
 <body>
- <div class="container">
-  <spring:url value="/clients/addClient" var="applyURL" />
+ <div class="container-fluid">
  <div class="card bg-info text-white">
  	<div class="card-header">You are applying for this session :</div>
     <div class="card-body">
@@ -14,9 +13,9 @@
     </div>
   </div>
   
-  <spring:url value="/clients/${sessionForm.getId()}/addClient" var="saveURL" />
+  <spring:url value="/clients/${sessionForm.getId()}/addClient" var="addURL" />
   <h1>Enter your coordonnates :</h1>
-  <form:form modelAttribute="clientForm" method="post" action="${saveURL }" cssClass="form" >
+  <form:form modelAttribute="clientForm" method="post" action="${addURL }" cssClass="form" >
    <form:hidden path="id"/>
    <div class="form-group">
     <label>First Name : </label>
@@ -31,12 +30,15 @@
     <form:input path="email" cssClass="form-control" id="email" />
    </div>
    <div class="form-group">
+    <label> Address : </label>
+    <form:input path="address" cssClass="form-control" id="address" />
+   </div>
+   <div class="form-group">
     <label> Phone : </label>
     <form:input path="phone" cssClass="form-control" id="phone" />
    </div>
    <button type="submit" class="btn btn-success">Apply</button>
   </form:form>
-  
   
  </div>
 <%@ include file="../../footer/footer.jsp"%>

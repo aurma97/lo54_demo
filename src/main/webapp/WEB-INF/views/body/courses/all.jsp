@@ -10,7 +10,7 @@
 		   <tbody>
 		    <c:forEach items="${courses}" var="course" >
 		     <tr>
-		      <td><c:out var="${course.getTitle()}"/></td>
+		      <td>${course.getTitle()}</td>
 		      <td>
 		       <spring:url value="/courses/updateCourse/${course.getId()}" var="updateURL" />
 		       <a class="btn btn-primary" href="${updateURL}" role="button" >Update</a>
