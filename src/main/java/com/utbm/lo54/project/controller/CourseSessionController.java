@@ -16,11 +16,19 @@ public class CourseSessionController {
     private CourseService courseService;
     
     @Autowired
+    private ClientService clientService;
+    
+    @Autowired
     private LocationService locationService;
     
     @RequestMapping("/courseSession")
     public  ModelAndView getAllCourseSessions() {
     	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
+    	
+    	for(CourseSession session : sessions) {
+    		session.setBusy(clientService.CountByCourseSession(session));
+    	}
+    	
     	//Envoi de toutes les sessions à la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
