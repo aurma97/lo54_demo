@@ -22,17 +22,20 @@ public class CourseSessionController {
     private LocationService locationService;
     
     @RequestMapping("/courseSession")
-    public  ModelAndView getAllCourseSessions() {
+    public List<CourseSession> getAllCourseSessions() {
     	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
     	
     	for(CourseSession session : sessions) {
-    		session.setBusy(clientService.CountByCourseSession(session));
+    		Float percentage = (float) clientService.CountByCourseSession(session) / session.getMax() ;
+    		session.setBusy(percentage);
+    		session.setParticipants(clientService.CountByCourseSession(session));
     	}
+    	
     	
     	//Envoi de toutes les sessions à la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
-    	return model;
+    	return sessions;
     }
 
     @RequestMapping("/courseSession/{id}")
@@ -71,6 +74,18 @@ public class CourseSessionController {
     	ModelAndView model = new ModelAndView("body/clients/add");
     	model.addObject("sessionForm", courseSession);
     	
+    	return model;
+    }
+  //Méthode qui renvoit la vue vers le formulaire d'ajout de la sessioin
+    @RequestMapping(method = RequestMethod.GET, value = "/courses/vueAddSession/")
+    public ModelAndView vueAddSession() {
+    	ModelAndView model = new ModelAndView("body/sessions/add");
+    	List<Course> courses = courseService.getAllCourses();
+    	List<Location> locations = locationService.getAllLocations();
+    	//CourseSession courseSessionForm = new CourseSession();
+    	//model.addObject("courseSessionForm", courseSessionForm);
+    	model.addObject("courses", courses);
+    	model.addObject("locations", locations);
     	return model;
     }
 }

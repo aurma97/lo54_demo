@@ -6,7 +6,7 @@
 		   <form:hidden path="id"/>
 		   <div class="form-group">
 		    <label>Title</label>
-		    <form:input path="city" cssClass="form-control" id="city" />
+		    <form:input path="city" cssClass="form-control" id="city" required="required"/>
 		   </div>
 		   <button type="submit" class="btn btn-success">Save</button>
 		  </form:form>
