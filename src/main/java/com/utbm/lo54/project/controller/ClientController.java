@@ -41,12 +41,19 @@ public class ClientController {
     public Client getClient(@PathVariable Integer id) {
         return clientService.getClient(id);
     }
+    
+    @RequestMapping("/clients/count/{CourseSessionId}")
+    public Long getCount(@PathVariable Integer CourseSessionId) {
+    	CourseSession cs = courseSessionService.getCourseSession(CourseSessionId);
+        return clientService.CountByCourseSession(cs);
+    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/clients/{courseSessionId}/addClient")
-    public ModelAndView addClient(@ModelAttribute("Client") Client client, @PathVariable Integer courseSessionId) {
+    public void addClient(@RequestBody Client client, @PathVariable Integer courseSessionId) {
     	
     	client.setCourseSession(courseSessionService.getCourseSession(courseSessionId));
         clientService.addClient(client);
+        System.out.println(client.getEmail());
         
         if (client.getEmail() != null) {
         	try {
@@ -59,7 +66,7 @@ public class ClientController {
 				System.out.println(e.getMessage());
 			}
         }
-        return new ModelAndView("redirect:/sessions");
+        //return new ModelAndView("redirect:/sessions");
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/client/{courseSessionId}/session/{id}")
