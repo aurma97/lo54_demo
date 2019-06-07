@@ -26,8 +26,15 @@ public class ClientController {
    
     
     @RequestMapping("/clients")
-    public List<Client> getAllClients() {
-        return clientService.getAllClients();
+    public ModelAndView getAllClients() {
+    	List<Client> clients = clientService.getAllClients();
+        //Envoi de tous les cours à la vue
+        ModelAndView model = new ModelAndView("body/clients/all");
+        
+        //Ajout de l'objet courseSession pour afficher tous ces informations en fonction de l'id du client
+        model.addObject("courseSessionService", courseSessionService);
+        model.addObject("clients", clients);
+        return model;
     }
 
     @RequestMapping("/clients/{id}")
@@ -36,7 +43,7 @@ public class ClientController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/clients/{courseSessionId}/addClient")
-    public ModelAndView addClient(@ModelAttribute("clientForm") Client client, BindingResult result, @PathVariable Integer courseSessionId) {
+    public ModelAndView addClient(@ModelAttribute("Client") Client client, @PathVariable Integer courseSessionId) {
     	
     	client.setCourseSession(courseSessionService.getCourseSession(courseSessionId));
         clientService.addClient(client);

@@ -1,22 +1,30 @@
 <%@ include file="../../header/header.jsp"%>
 <body>
  <div class="container-fluid">
- <div class="card bg-info text-white">
- 	<div class="card-header">You are applying for this session :</div>
-    <div class="card-body">
-    	<ul>
-		  <li> Title : ${sessionForm.getCourse().getTitle()}</li>
-		  <li>Start date : ${sessionForm.getStartDate()}</li>
-		  <li>End date : ${sessionForm.getEndDate() }</li>
-		  <li>Location : ${sessionForm.getLocation().getCity()}</li>
-  		</ul>
-    </div>
-  </div>
+  <h3>You are applying for this session : </h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-info">
+        <td>${sessionForm.getCourse().getTitle()}</td>
+        <td>${sessionForm.getStartDate()}</td>
+        <td>${sessionForm.getEndDate() }</td>
+        <td>${sessionForm.getLocation().getCity()}</td>
+      </tr>
+    </tbody>
+  </table>
+
   
   <spring:url value="/clients/${sessionForm.getId()}/addClient" var="addURL" />
-  <h1>Enter your coordonnates :</h1>
-  <form:form modelAttribute="clientForm" method="post" action="${addURL }" cssClass="form" >
-   <form:hidden path="id"/>
+  <h3>Enter your coordonnates :</h3>
+  <form:form modelAttribute="Client" method="post" action="${addURL }" cssClass="form" >
    <div class="form-group">
     <label>First Name : </label>
     <form:input path="firstName" cssClass="form-control" id="firstName" />

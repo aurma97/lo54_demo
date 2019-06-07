@@ -9,7 +9,9 @@
 	    		<th scope="row">End Date</th>
 	    		<th scope="row">Max</th>
 	    		<th scope="row">Location</th>
-	    		<th scope="row">Apply</th>
+	    		<th scope="row">Update</th>
+	    		<th scope="row">Subscribe</th>
+	    		<th scope="row">Subscribers</th>
 	   		</thead>
 	   		<tbody>
 	    		<c:forEach items="${sessions}" var="session" >
@@ -20,9 +22,14 @@
 	      			<td>${session.getMax() }</td>
 	      			<td>${session.getLocation().getCity() }</td>
 	      			<td>
-	       				<spring:url value="/client/applySession/${session.getId()}" var="applyURL" />
-	       				<a class="btn btn-primary" href="${applyURL }" role="button" >Apply</a>
+	      				<spring:url value="/session/updateSession/${session.getId()}" var="updateURL" />
+	      				<a class="btn btn-warning" href="${updateURL }" role="button">Update</a>
 	      			</td>
+	      			<td>
+	       				<spring:url value="/client/applySession/${session.getId()}" var="applyURL" />
+	       				<a class="btn btn-primary" href="${applyURL }" role="button" >Subscribe</a>
+	      			</td>
+	      			<td><a class="btn btn-success" href="#" role="button">Subscribers</a></td>
 	     		</tr>
 	   			</c:forEach>
 	   		</tbody>

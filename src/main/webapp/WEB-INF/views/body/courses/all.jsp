@@ -13,7 +13,7 @@
 		      <td>${course.getTitle()}</td>
 		      <td>
 		       <spring:url value="/courses/updateCourse/${course.getId()}" var="updateURL" />
-		       <a class="btn btn-primary" href="${updateURL}" role="button" >Update</a>
+		       <a class="btn btn-warning" href="${updateURL}" role="button" >Update</a>
 		      </td>
 		      <td>
 		       <spring:url value="/courses/deleteCourse/${course.getId()}" var="deleteURL" />

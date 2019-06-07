@@ -13,7 +13,7 @@
 		      <td>${location.getCity()}</td>
 		      <td>
 		       <spring:url value="/locations/updateLocation/${location.getId()}" var="updateURL" />
-		       <a class="btn btn-primary" href="${updateURL}" role="button" >Update</a>
+		       <a class="btn btn-warning" href="${updateURL}" role="button" >Update</a>
 		      </td>
 		      <td>
 		       <spring:url value="/locations/deleteLocation/${location.getId()}" var="deleteURL" />
