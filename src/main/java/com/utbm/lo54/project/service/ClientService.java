@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.utbm.lo54.project.entity.Client;
+import com.utbm.lo54.project.entity.CourseSession;
 import com.utbm.lo54.project.repository.ClientRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,9 @@ public class ClientService {
 
     public void deleteClient(Integer id) {
     	clientRepository.deleteById(id);
+    }
+    
+    public Long CountByCourseSession(CourseSession cs) {
+    	return clientRepository.countByCourseSession(cs);
     }
 }
