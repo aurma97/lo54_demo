@@ -25,17 +25,24 @@ public class CourseSessionController {
     public ModelAndView getAllCourseSessions() {
     	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
     	
+    	//Pour récupérer les pourcentages et les participants par session
     	for(CourseSession session : sessions) {
     		Float percentage = (float) clientService.CountByCourseSession(session) / session.getMax() ;
     		session.setBusy(percentage);
     		session.setParticipants(clientService.CountByCourseSession(session));
     	}
-    	
-    	
+  	
     	//Envoi de toutes les sessions à la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
     	return model;
+    }
+    
+    //Pour récupérer les participants à une session spécifique
+    @RequestMapping("/courseSession/{id}/participants/")
+    public List<Client> participantsOfSession(@PathVariable Integer id) {
+    	List<Client> clients = clientService.findByCourseSession(courseSessionService.getCourseSession(id));
+    	return clients;
     }
 
     @RequestMapping("/courseSession/{id}")

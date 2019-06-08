@@ -41,4 +41,8 @@ public class ClientService {
     public Long CountByCourseSession(CourseSession cs) {
     	return clientRepository.countByCourseSession(cs);
     }
+    
+    public List<Client> findByCourseSession(CourseSession cs){
+    	return clientRepository.findByCourseSession(cs);
+    }
 }
