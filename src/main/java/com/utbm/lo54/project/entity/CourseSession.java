@@ -23,7 +23,10 @@ public class CourseSession {
     private Integer max;
     
     @Column
-    private Long busy;
+    private Float busy;
+    
+    @Column
+    private Long participants;
     
     @ManyToOne
     @JoinColumn(name="course_id", nullable=false)
@@ -129,12 +132,16 @@ public class CourseSession {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	public Long getBusy() {
+	public Float getBusy() {
 		return busy;
 	}
-	public void setBusy(Long busy) {
+	public void setBusy(Float busy) {
 		this.busy = busy;
 	}
-	
-	
+	public Long getParticipants() {
+		return participants;
+	}
+	public void setParticipants(Long participants) {
+		this.participants = participants;
+	}
 }

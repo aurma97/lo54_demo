@@ -22,12 +22,15 @@ public class CourseSessionController {
     private LocationService locationService;
     
     @RequestMapping("/courseSession")
-    public  ModelAndView getAllCourseSessions() {
+    public ModelAndView getAllCourseSessions() {
     	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
     	
     	for(CourseSession session : sessions) {
-    		session.setBusy(clientService.CountByCourseSession(session));
+    		Float percentage = (float) clientService.CountByCourseSession(session) / session.getMax() ;
+    		session.setBusy(percentage);
+    		session.setParticipants(clientService.CountByCourseSession(session));
     	}
+    	
     	
     	//Envoi de toutes les sessions à la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");

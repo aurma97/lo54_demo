@@ -8,6 +8,8 @@
 	    		<th scope="row">Start Date</th>
 	    		<th scope="row">End Date</th>
 	    		<th scope="row">Max</th>
+	    		<th scope="row">Participant(s)</th>
+	    		<th scope="row">Percentage</th>
 	    		<th scope="row">Location</th>
 	    		<th scope="row">Update</th>
 	    		<th scope="row">Subscribe</th>
@@ -20,6 +22,8 @@
 	      			<td>${session.getStartDate() }</td>
 	      			<td>${session.getEndDate() }</td>
 	      			<td>${session.getMax() }</td>
+	      			<td>${session.getParticipants()}%</td>
+	      			<td>${session.getBusy() }</td>
 	      			<td>${session.getLocation().getCity() }</td>
 	      			<td>
 	      				<spring:url value="/session/updateSession/${session.getId()}" var="updateURL" />
