@@ -25,24 +25,17 @@ public class CourseSessionController {
     public ModelAndView getAllCourseSessions() {
     	List<CourseSession> sessions = courseSessionService.getAllCoursesSession();
     	
-    	//Pour récupérer les pourcentages et les participants par session
     	for(CourseSession session : sessions) {
-    		Float percentage = (float) clientService.CountByCourseSession(session) / session.getMax() ;
+    		Float percentage = ((float) clientService.CountByCourseSession(session) / session.getMax())*100 ;
     		session.setBusy(percentage);
     		session.setParticipants(clientService.CountByCourseSession(session));
     	}
-  	
-    	//Envoi de toutes les sessions à la vue sessions/all
+    	
+    	
+    	//Envoi de toutes les sessions � la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
     	return model;
-    }
-    
-    //Pour récupérer les participants à une session spécifique
-    @RequestMapping("/courseSession/{id}/participants/")
-    public List<Client> participantsOfSession(@PathVariable Integer id) {
-    	List<Client> clients = clientService.findByCourseSession(courseSessionService.getCourseSession(id));
-    	return clients;
     }
 
     @RequestMapping("/courseSession/{id}")
@@ -74,7 +67,7 @@ public class CourseSessionController {
         courseSessionService.deleteCourseSession(id);
     }
     
-    //Renvoit vers le formulaire de création d'un nouveau client avec l'id de la session
+    //Renvoit vers le formulaire de cr�ation d'un nouveau client avec l'id de la session
     @RequestMapping(method = RequestMethod.GET, value ="/client/applySession/{id}")
     public ModelAndView applySession(@PathVariable Integer id) {
     	CourseSession courseSession = courseSessionService.getCourseSession(id);
@@ -83,7 +76,7 @@ public class CourseSessionController {
     	
     	return model;
     }
-  //Méthode qui renvoit la vue vers le formulaire d'ajout de la sessioin
+  //M�thode qui renvoit la vue vers le formulaire d'ajout de la sessioin
     @RequestMapping(method = RequestMethod.GET, value = "/courses/vueAddSession/")
     public ModelAndView vueAddSession() {
     	ModelAndView model = new ModelAndView("body/sessions/add");

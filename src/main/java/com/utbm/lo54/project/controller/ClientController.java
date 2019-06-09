@@ -24,7 +24,7 @@ public class ClientController {
     @Autowired
     private NotificationService notificationService;
    
-    
+    //Liste de tous les clients
     @RequestMapping("/clients")
     public ModelAndView getAllClients() {
     	List<Client> clients = clientService.getAllClients();
@@ -48,6 +48,7 @@ public class ClientController {
         return clientService.CountByCourseSession(cs);
     }
 
+    //Ajout d'un nouveau client
     @RequestMapping(method = RequestMethod.POST, value = "/clients/{courseSessionId}/addClient")
     public void addClient(@RequestBody Client client, @PathVariable Integer courseSessionId) {
     	
@@ -68,9 +69,10 @@ public class ClientController {
         }
         //return new ModelAndView("redirect:/sessions");
     }
-
-    @RequestMapping(method = RequestMethod.PUT, value = "/client/{courseSessionId}/session/{id}")
-    public void updateClient(@RequestBody Client client, @PathVariable Integer courseSessionId, @PathVariable Integer id) {
+    
+    //Maj d'un client
+    @RequestMapping(method = RequestMethod.GET, value = "/client/updateClient/{courseSessionId}/session/{id}")
+    public ModelAndView updateClient(@RequestBody Client client, @PathVariable Integer courseSessionId, @PathVariable Integer id) {
     	
     	Client cs = clientService.getClient(id);
     	cs.setLastName(client.getLastName());
@@ -80,10 +82,41 @@ public class ClientController {
     	cs.setEmail(client.getEmail());
     	cs.setCourseSession(courseSessionService.getCourseSession(courseSessionId));
     	clientService.updateClient(cs);
+        
+    	ModelAndView model = new ModelAndView("body/locations/add");
+     	model.addObject("cs", cs);
+     	return model;
     }
-
-    @RequestMapping(method = RequestMethod.DELETE, value = "/client/{id}")
-    public void deleteClient(@PathVariable Integer id) {
+    
+    //Suppression d'un Client
+    @RequestMapping(method = RequestMethod.GET, value = "/client/deleteClient/{id}")
+    public ModelAndView deleteClient(@PathVariable Integer id) {
         clientService.deleteClient(id);
+        return new ModelAndView("redirect:/clients");
+    }
+    
+    //Retourne la liste des clients inscrits à une session
+    @RequestMapping(method = RequestMethod.GET, value = "/client/allClients/{courseSessionId}")
+    public ModelAndView clientsSession(@PathVariable Integer courseSessionId) {
+    	ModelAndView model = new ModelAndView("body/clients/allSession");
+    	CourseSession cs = courseSessionService.getCourseSession(courseSessionId);
+    	List<Client> clients = clientService.findByCourseSession(cs);
+    	//Charge tous les clients de la session dans la vue
+    	model.addObject("clients", clients);
+    	//Charge la session concernée
+    	model.addObject("session", cs);
+    	return model;
+    }
+    
+    //Récupération du client pour 
+    @RequestMapping(method = RequestMethod.GET, value = "/client/updateClient/session/{courseSessionId}/client/{id}")
+    public ModelAndView vueUpdate(@PathVariable Integer courseSessionId, @PathVariable Integer id){
+        ModelAndView model = new ModelAndView();
+        CourseSession cs = courseSessionService.getCourseSession(courseSessionId);
+        Client cl = clientService.getClient(id);
+        model.addObject("session", cs);
+        model.addObject("client",cl);
+        model.setViewName("body/clients/edit");
+        return model;
     }
 }

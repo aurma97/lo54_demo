@@ -5,6 +5,6 @@
 <title>Gestion de formation | Accueil</title>
 </head>
 <body>
-	<p>Hello my name is ${course} </p>
+    <p>Hello my name is ${course} </p>
 </body>
 </html>
