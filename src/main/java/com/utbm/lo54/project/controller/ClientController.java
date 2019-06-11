@@ -49,8 +49,8 @@ public class ClientController {
     }
 
     //Ajout d'un nouveau client
-    @RequestMapping(method = RequestMethod.POST, value = "/clients/{courseSessionId}/addClient")
-    public void addClient(@RequestBody Client client, @PathVariable Integer courseSessionId) {
+    @RequestMapping(method = RequestMethod.POST, value = "/client/{courseSessionId}/addClient")
+    public ModelAndView addClient(@ModelAttribute("client") Client client, @PathVariable Integer courseSessionId) {
     	
     	client.setCourseSession(courseSessionService.getCourseSession(courseSessionId));
         clientService.addClient(client);
@@ -67,7 +67,7 @@ public class ClientController {
 				System.out.println(e.getMessage());
 			}
         }
-        //return new ModelAndView("redirect:/sessions");
+        return new ModelAndView("redirect:/courseSession");
     }
     
     //Maj d'un client
@@ -115,5 +115,17 @@ public class ClientController {
         model.addObject("session", cs);
         model.addObject("client",cl);
         return model;
+    }
+        
+    //Renvoit vers le formulaire de création d'un nouveau client avec l'id de la session
+    @RequestMapping(method = RequestMethod.GET, value ="/client/applySession/{id}")
+    public ModelAndView applySession(@PathVariable Integer id) {
+    	CourseSession session = courseSessionService.getCourseSession(id);
+    	ModelAndView model = new ModelAndView("body/clients/add");
+        Client client = new Client();
+        model.addObject("client", client);
+    	model.addObject("session", session);
+    	
+    	return model;
     }
 }

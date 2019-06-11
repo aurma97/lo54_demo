@@ -70,16 +70,6 @@ public class CourseSessionController {
         courseSessionService.deleteCourseSession(id);
     }
     
-    //Renvoit vers le formulaire de création d'un nouveau client avec l'id de la session
-    @RequestMapping(method = RequestMethod.GET, value ="/client/applySession/{id}")
-    public ModelAndView applySession(@PathVariable Integer id) {
-    	CourseSession courseSession = courseSessionService.getCourseSession(id);
-    	ModelAndView model = new ModelAndView("body/clients/add");
-    	model.addObject("sessionForm", courseSession);
-    	
-    	return model;
-    }
-    
   //Méthode qui renvoit la vue vers le formulaire d'ajout de la sessioin
     @RequestMapping(method = RequestMethod.GET, value = "/session/vueAddSession")
     public ModelAndView vueAddSession() {
