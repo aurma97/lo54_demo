@@ -32,7 +32,7 @@ public class CourseSessionController {
     	}
     	
     	
-    	//Envoi de toutes les sessions à la vue sessions/all
+    	//Envoi de toutes les sessions ï¿½ la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
     	return model;
@@ -43,31 +43,34 @@ public class CourseSessionController {
         return courseSessionService.getCourseSession(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/courses/{courseId}/session/{locationId}")
-    public void addCourseSession(@RequestBody CourseSession courseSession, @PathVariable Integer courseId, @PathVariable Integer locationId) {
-    	courseSession.setCourse(courseService.getCourse(courseId));
-    	courseSession.setLocation(locationService.getLocation(locationId));
+    @RequestMapping(method = RequestMethod.POST, value = "/session/addCourseSession")
+    public ModelAndView addCourseSession(@ModelAttribute("session") CourseSession courseSession) {
+    	//courseSession.setCourse(courseSession.getCourse());
+    	//courseSession.setLocation(locationService.getLocation(locationId));
         courseSessionService.addCourseSession(courseSession);
+        return new ModelAndView("redirect:/courseSession");
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/courses/{courseId}/session/{locationId}/{id}")
-    public void updateCourseSession(@RequestBody CourseSession courseSession, @PathVariable Integer courseId, @PathVariable Integer locationId, @PathVariable Integer id) {
+    //Maj d'une session
+    @RequestMapping(method = RequestMethod.POST, value = "/session/updateSession/{id}")
+    public ModelAndView updateCourseSession(@ModelAttribute("session") CourseSession courseSession, @PathVariable Integer id) {
     	
     	CourseSession cs = courseSessionService.getCourseSession(id);
     	cs.setStartDate(courseSession.getStartDate());
     	cs.setEndDate(courseSession.getEndDate());
     	cs.setMax(courseSession.getMax());
-    	cs.setCourse(courseService.getCourse(courseId));
-    	cs.setLocation(locationService.getLocation(locationId));
+    	cs.setCourse(cs.getCourse());
+    	cs.setLocation(cs.getLocation());
     	courseSessionService.updateCourseSession(cs);
+        return new ModelAndView("redirect:/courseSession");
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/courseSession/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/courseSession/{id}")
     public void deleteCourseSession(@PathVariable Integer id) {
         courseSessionService.deleteCourseSession(id);
     }
     
-    //Renvoit vers le formulaire de création d'un nouveau client avec l'id de la session
+    //Renvoit vers le formulaire de crÃ©ation d'un nouveau client avec l'id de la session
     @RequestMapping(method = RequestMethod.GET, value ="/client/applySession/{id}")
     public ModelAndView applySession(@PathVariable Integer id) {
     	CourseSession courseSession = courseSessionService.getCourseSession(id);
@@ -76,16 +79,33 @@ public class CourseSessionController {
     	
     	return model;
     }
-  //Méthode qui renvoit la vue vers le formulaire d'ajout de la sessioin
-    @RequestMapping(method = RequestMethod.GET, value = "/courses/vueAddSession/")
+    
+  //MÃ©thode qui renvoit la vue vers le formulaire d'ajout de la sessioin
+    @RequestMapping(method = RequestMethod.GET, value = "/session/vueAddSession")
     public ModelAndView vueAddSession() {
     	ModelAndView model = new ModelAndView("body/sessions/add");
     	List<Course> courses = courseService.getAllCourses();
     	List<Location> locations = locationService.getAllLocations();
     	//CourseSession courseSessionForm = new CourseSession();
     	//model.addObject("courseSessionForm", courseSessionForm);
+        CourseSession session = new CourseSession();
+        model.addObject("session", session);
     	model.addObject("courses", courses);
     	model.addObject("locations", locations);
     	return model;
+    }
+    
+    //MÃ©thode qui renvoit la vue d'update de la session
+    @RequestMapping(method =  RequestMethod.GET, value = "/session/vueUpdateSession/{id}")
+    public ModelAndView vueUpdateSession(@PathVariable Integer id){
+        ModelAndView model = new ModelAndView("body/sessions/edit");
+        List<Course> courses = courseService.getAllCourses();
+    	List<Location> locations = locationService.getAllLocations();
+        CourseSession session = courseSessionService.getCourseSession(id);
+        model.addObject("courses", courses);
+    	model.addObject("locations", locations);
+        model.addObject("session", session);
+        
+        return model;
     }
 }

@@ -2,9 +2,9 @@
       <div class="container-fluid">
 		  <spring:url value="/locations/addLocation" var="saveURL" />
 		  <h2>Add or Modify Location</h2>
-		  <form:form modelAttribute="locationForm" method="post" action="${saveURL }" cssClass="form" >
+		  <form:form  modelAttribute="locationForm" method="post" action="${saveURL }" cssClass="form" >
 		   <form:hidden path="id"/>
-		   <div class="form-group">
+		   <div class="form-group col-sm-5">
 		    <label>Title</label>
 		    <form:input path="city" cssClass="form-control" id="city" required="required"/>
 		   </div>

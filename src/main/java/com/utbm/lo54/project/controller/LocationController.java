@@ -13,7 +13,7 @@ public class LocationController {
     private LocationService locationService;
 
     @RequestMapping("/locations")
-    public ModelAndView getAllLocations() {
+    public ModelAndView getAllLocations(){
         List<Location> locations = locationService.getAllLocations();
       //Envoi de tous les cours à la vue
     	ModelAndView model = new ModelAndView("body/locations/all");

@@ -71,8 +71,8 @@ public class ClientController {
     }
     
     //Maj d'un client
-    @RequestMapping(method = RequestMethod.GET, value = "/client/updateClient/{courseSessionId}/session/{id}")
-    public ModelAndView updateClient(@RequestBody Client client, @PathVariable Integer courseSessionId, @PathVariable Integer id) {
+    @RequestMapping(method = RequestMethod.POST, value = "/client/updateClient/{courseSessionId}/{id}")
+    public ModelAndView updateClient(@ModelAttribute("client") Client client, @PathVariable Integer courseSessionId, @PathVariable Integer id){
     	
     	Client cs = clientService.getClient(id);
     	cs.setLastName(client.getLastName());
@@ -82,10 +82,7 @@ public class ClientController {
     	cs.setEmail(client.getEmail());
     	cs.setCourseSession(courseSessionService.getCourseSession(courseSessionId));
     	clientService.updateClient(cs);
-        
-    	ModelAndView model = new ModelAndView("body/locations/add");
-     	model.addObject("cs", cs);
-     	return model;
+     	return new ModelAndView("redirect:/clients");
     }
     
     //Suppression d'un Client
@@ -108,15 +105,15 @@ public class ClientController {
     	return model;
     }
     
-    //Récupération du client pour 
-    @RequestMapping(method = RequestMethod.GET, value = "/client/updateClient/session/{courseSessionId}/client/{id}")
-    public ModelAndView vueUpdate(@PathVariable Integer courseSessionId, @PathVariable Integer id){
-        ModelAndView model = new ModelAndView();
-        CourseSession cs = courseSessionService.getCourseSession(courseSessionId);
+    //Récupération du client pour passer à la vue edit
+    @RequestMapping(method = RequestMethod.GET, value = "/client/vueUpdate/{id}")
+    public ModelAndView vueUpdate(@PathVariable Integer id){
         Client cl = clientService.getClient(id);
+        ModelAndView model = new ModelAndView("body/clients/edit");
+        CourseSession cs = courseSessionService.getCourseSession(cl.getCourseSession().getId());
+        
         model.addObject("session", cs);
         model.addObject("client",cl);
-        model.setViewName("body/clients/edit");
         return model;
     }
 }

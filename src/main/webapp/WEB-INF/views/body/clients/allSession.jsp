@@ -26,7 +26,6 @@
 		    <th scope="row">Email</th>
 		    <th scope="row">Address</th>
 		    <th scope="row">Phone</th>
-		    <th scope="row">Update</th>
 		    <th scope="row">Delete</th>
 		   </thead>
 		   <tbody>
@@ -41,10 +40,6 @@
 			      <td>${client.getEmail()}</td>
 			      <td>${client.getAddress()}</td>
 			      <td>${client.getPhone()}</td>
-			      <td>
-			       <spring:url value="/client/updateClient/${client.getId()}" var="updateURL" />
-			       <a class="btn btn-warning" href="${updateURL}" role="button" >Update</a>
-			      </td>
 			      <td>
 			       <spring:url value="/client/deleteClient/${client.getId()}" var="deleteURL" />
 			       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" >Delete</a>

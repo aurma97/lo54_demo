@@ -20,7 +20,7 @@
 			      <td>${client.getAddress()}</td>
 			      <td>${client.getPhone()}</td>
 			      <td>
-			       <spring:url value="/client/updateClient/session/${client.getCourseSession().getId()}/client/${client.getId()}" var="updateURL" />
+			       <spring:url value="/client/vueUpdate/${client.getId()}" var="updateURL" />
 			       <a class="btn btn-warning" href="${updateURL}" role="button" >Update</a>
 			      </td>
 			      <td>

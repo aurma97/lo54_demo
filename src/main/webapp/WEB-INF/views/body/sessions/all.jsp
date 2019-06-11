@@ -1,8 +1,7 @@
 <%@ include file="../../header/header.jsp"%>
       <div class="container-fluid">
         <h2>Session List</h2>
-	    <input class="form-control" id="filter" type="text" placeholder="Filter by date...">
-	    <table class="table table-striped">
+	    <table class="table table-striped" id="tableSessions">
 	   		<thead>
 	   			<th scope="row">Course Title</th>
 	    		<th scope="row">Start Date</th>
@@ -34,7 +33,7 @@
 		      			</td>
 		      			<td>${session.getLocation().getCity() }</td>
 		      			<td>
-		      				<spring:url value="/session/updateSession/${session.getId()}" var="updateURL" />
+		      				<spring:url value="/session/vueUpdateSession/${session.getId()}" var="updateURL" />
 		      				<a class="btn btn-warning" href="${updateURL }" role="button">Update</a>
 		      			</td>
 		      			<td>
@@ -52,7 +51,7 @@
 	    		
 	   		</tbody>
 	  	</table>
-	  	<spring:url value="/courseSession/vueAddSession/" var="addURL" />
+	  	<spring:url value="/session/vueAddSession" var="addURL" />
 	  	<a class="btn btn-success" href="${addURL }" role="button" >Add New Session</a>
       </div>
     </div>

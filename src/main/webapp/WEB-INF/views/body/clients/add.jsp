@@ -24,7 +24,7 @@
   
   <spring:url value="/clients/${sessionForm.getId()}/addClient" var="addURL" />
   <h3>Enter your coordonnates :</h3>
-  <form:form modelAttribute="Client" method="post" action="${addURL }" cssClass="form" >
+  <form:form modelAttribute="client" method="post" action="${addURL }" cssClass="form" >
    <div class="form-group">
     <label>First Name : </label>
     <form:input path="firstName" cssClass="form-control" id="firstName" />

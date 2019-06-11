@@ -4,7 +4,7 @@
 		  <h2>Add or Modify Course</h2>
 		  <form:form modelAttribute="courseForm" method="post" action="${saveURL }" cssClass="form" >
 		   <form:hidden path="id"/>
-		   <div class="form-group">
+		   <div class="form-group col-sm-5">
 		    <label>Title</label>
 		    <form:input path="title" cssClass="form-control" id="title" required="required"/>
 		   </div>

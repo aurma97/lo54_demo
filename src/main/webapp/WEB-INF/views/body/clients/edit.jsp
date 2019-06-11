@@ -1,37 +1,31 @@
 <%@ include file="../../header/header.jsp"%>
       <div class="container-fluid">
-          <h2>Client List</h2>
-		  <table class="table table-striped">
-		   <thead>
-		    <th scope="row">First Name</th>
-		    <th scope="row">Last Name</th>
-		    <th scope="row">Email</th>
-		    <th scope="row">Address</th>
-		    <th scope="row">Phone</th>
-		    <th scope="row">Update</th>
-		    <th scope="row">Delete</th>
-		   </thead>
-		   <tbody>
-		    <c:forEach items="${clients}" var="client" >
-		     <tr>
-			      <td>${client.getFirstName()}</td>
-			      <td>${client.getLastName()}</td>
-			      <td>${client.getEmail()}</td>
-			      <td>${client.getAddress()}</td>
-			      <td>${client.getPhone()}</td>
-			      <td>
-			       <spring:url value="/client/updateClient/session/${client.getCourseSession().getId()}/client/${client.getId()}" var="updateURL" />
-			       <a class="btn btn-warning" href="${updateURL}" role="button" >Update</a>
-			      </td>
-			      <td>
-			       <spring:url value="/client/deleteClient/${client.getId()}" var="deleteURL" />
-			       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" >Delete</a>
-			      </td>
-		     </tr>
-		    </c:forEach>
-		   </tbody>
-		  </table>
-      </div>
+          <h2>Edit Client</h2>
+          <spring:url value="/client/updateClient/${client.getCourseSession().getId()}/${client.getId()}" var="updateURL" />
+          <form:form modelAttribute="client" method="post" action="${updateURL}" cssClass="form" >
+            <div class="form-group col-sm-5">
+             <label>First Name : </label>
+             <form:input path="firstName" cssClass="form-control" id="firstName" required="required"/>
+            </div>
+            <div class="form-group col-sm-5">
+             <label> Last Name : </label>
+             <form:input path="lastName" cssClass="form-control" id="lastName" required="required"/>
+            </div>
+            <div class="form-group col-sm-5">
+             <label> Email : </label>
+             <form:input path="email" cssClass="form-control" id="email" required="required"/>
+            </div>
+            <div class="form-group col-sm-5">
+             <label> Address : </label>
+             <form:input path="address" cssClass="form-control" id="address" required="required"/>
+            </div>
+            <div class="form-group col-sm-5">
+             <label> Phone : </label>
+             <form:input path="phone" cssClass="form-control" id="phone" required="required"/>
+            </div>
+            <button type="submit" class="btn btn-success">Modify</button>
+           </form:form>
+        </div>
     </div>
     <!-- /#page-content-wrapper -->
   </div>
