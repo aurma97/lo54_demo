@@ -24,7 +24,7 @@
 		   </tbody>
 		  </table>
 		  <spring:url value="/locations/vueAddLocation/" var="addURL" />
-		  <a class="btn btn-success" href="${addURL}" role="button" >Add New Course</a>
+		  <a class="btn btn-success" href="${addURL}" role="button" >Add New Location</a>
       </div>
     </div>
     <!-- /#page-content-wrapper -->
