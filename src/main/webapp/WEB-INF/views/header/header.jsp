@@ -24,10 +24,11 @@
     <div class="bg-light border-right" id="sidebar-wrapper">
       <div class="sidebar-heading">Menu </div>
       <div class="list-group list-group-flush">
-        <a href="/courseSession" class="list-group-item list-group-item-action bg-light"><i class="fas fa-calendar" style="font-size:24px"></i> Sessions</a>
-        <a href="/courses" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book" style="font-size:24px"></i> Courses</a>
-        <a href="/clients" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users" style="font-size:24px"></i> Clients</a>
-        <a href="/locations" class="list-group-item list-group-item-action bg-light"><i class="fas fa-map-marker-alt" style="font-size:24px"></i> Locations</a>
+          <a href="/" class="list-group-item list-group-item-action bg-light"><i class="fas fa-home" style="font-size:24px"></i> Home</a>
+          <a href="/courseSession" class="list-group-item list-group-item-action bg-light"><i class="fas fa-calendar" style="font-size:24px"></i> Sessions</a>
+          <a href="/courses" class="list-group-item list-group-item-action bg-light"><i class="fas fa-book" style="font-size:24px"></i> Courses</a>
+          <a href="/clients" class="list-group-item list-group-item-action bg-light"><i class="fas fa-users" style="font-size:24px"></i> Clients</a>
+          <a href="/locations" class="list-group-item list-group-item-action bg-light"><i class="fas fa-map-marker-alt" style="font-size:24px"></i> Locations</a>
       </div>
     </div>
     <!-- /#sidebar-wrapper -->

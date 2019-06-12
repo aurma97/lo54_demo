@@ -1,6 +1,29 @@
 <%@ include file="../../header/header.jsp"%>
       <div class="container-fluid">
-        <h2>Session List</h2>
+		<h2>Session List</h2>
+		
+		<hr>
+		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+			Advanced search
+		</button>
+		<hr>
+
+		<div class="collapse" id="collapseExample">
+				<table class="table table-striped">
+						<tbody>
+								<td scope="row"><input type="text" id="courseTitle" onkeyup="courseTitleSearch()"  placeholder="Search by title"></td>
+								<td scope="row"><input type="text" id="startDate" onkeydown="startDateSearch()" placeholder="Search by startDate"></td>
+								<td scope="row"><input type="text" id="endDate" onkeydown="endDateSearch()" placeholder="Search by endDate"></td>
+								<td scope="row"><input type="text" id="max" onkeyup="maxSearch()" placeholder="Search by max"></td>
+								<td scope="row"><input type="text" id="participants" onkeyup="participantsSearch()" placeholder="Search by participants"></td>
+								<td scope="row"><input type="text" id="percentage" onkeyup="percentageSearch()" placeholder="Search by percentage"></td>
+								<td scope="row"></td>
+								<td scope="row"></td>
+						</tbody>
+				</table>
+		</div>
+
+
 	    <table class="table table-striped" id="tableSessions">
 	   		<thead>
 	   			<th scope="row">Course Title</th>
@@ -17,7 +40,7 @@
 	   		</thead>
 	   		<tbody>
 	   			<c:if test="${empty sessions }">
-	   				<tr><td colspan="7">Aucune session enregistrée.</td></tr>
+	   				<tr><td colspan="7">No sessions registered</td></tr>
 	   			</c:if>
 	   			<c:if test="${!empty sessions }">
 	   				<c:forEach items="${sessions}" var="session" >
@@ -64,4 +87,132 @@
     <!-- /#page-content-wrapper -->
   </div>
   <!-- /#wrapper -->
+  <script>
+		function courseTitleSearch() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("courseTitle");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableSessions");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[0]; //Ici on filtre par Nom
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+
+		function startDateSearch() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("startDate");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableSessions");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[1]; //Ici on filtre par Nom
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+
+		function endDateSearch() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("endDate");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableSessions");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[2]; //Ici on filtre par Nom
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+
+	function maxSearch() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("max");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableSessions");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[3]; //Ici on filtre par Nom
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+
+	function participantsSearch() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("participants");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableSessions");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[4]; //Ici on filtre par Nom
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+
+	function percentageSearch() {
+      // Declare variables 
+      var input, filter, table, tr, td, i;
+      input = document.getElementById("percentage");
+      filter = input.value.toUpperCase();
+      table = document.getElementById("tableSessions");
+      tr = table.getElementsByTagName("tr");
+
+      // Loop through all table rows, and hide those who don't match the search query
+      for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[5]; //Ici on filtre par Nom
+        if (td) {
+          if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+          } else {
+            tr[i].style.display = "none";
+          }
+        } 
+      }
+    }
+
+	</script>
 <%@ include file="../../footer/footer.jsp"%>

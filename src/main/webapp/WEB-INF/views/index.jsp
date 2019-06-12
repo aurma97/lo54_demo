@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Gestion de formation | Accueil</title>
-</head>
-<body>
-    <p>Hello my name is ${course} </p>
-</body>
-</html>
+<%@ include file="./header/header.jsp"%>
+      <div class="container-fluid">
+          <h2>Home</h2>
+		  Hello guys
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
+<%@ include file="./footer/footer.jsp"%>
