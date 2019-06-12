@@ -42,7 +42,7 @@
 			      <td>${client.getPhone()}</td>
 			      <td>
 			       <spring:url value="/client/deleteClient/${client.getId()}" var="deleteURL" />
-			       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" >Delete</a>
+			       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" ><i class="fas fa-trash-alt"></i></a>
 			      </td>
                         </tr>
                         </c:forEach>

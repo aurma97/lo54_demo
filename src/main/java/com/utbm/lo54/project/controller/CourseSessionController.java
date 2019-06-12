@@ -65,9 +65,10 @@ public class CourseSessionController {
         return new ModelAndView("redirect:/courseSession");
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/courseSession/{id}")
-    public void deleteCourseSession(@PathVariable Integer id) {
+    @RequestMapping(method = RequestMethod.GET, value = "/session/deleteSession/{id}")
+    public ModelAndView deleteCourseSession(@PathVariable Integer id) {
         courseSessionService.deleteCourseSession(id);
+        return new ModelAndView("redirect:/courseSession");
     }
     
   //Méthode qui renvoit la vue vers le formulaire d'ajout de la sessioin

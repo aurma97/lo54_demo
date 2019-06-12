@@ -60,7 +60,21 @@
     //Insertion du datatable
     $(document).ready( function(){
         $('#tableSessions').DataTable({
-            "pageLength": 6
+            "pageLength": 6,
+            "searching": false,
+            "bLengthChange" : false
+        });
+         $('#tableClients').DataTable({
+            "pageLength": 8,
+            "bLengthChange" : false
+        });
+         $('#tableLocations').DataTable({
+            "pageLength": 8,
+            "bLengthChange" : false
+        });
+         $('#tableCourses').DataTable({
+            "pageLength": 8,
+            "bLengthChange" : false
         });
     });
   </script>

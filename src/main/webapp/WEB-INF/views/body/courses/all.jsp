@@ -1,7 +1,7 @@
 <%@ include file="../../header/header.jsp"%>
       <div class="container-fluid">
           <h2>Course List</h2>
-		  <table class="table table-striped">
+		  <table class="table table-striped" id="tableCourses">
 		   <thead>
 		    <th scope="row">Title</th>
 		    <th scope="row">Update</th>
@@ -13,11 +13,11 @@
 		      <td>${course.getTitle()}</td>
 		      <td>
 		       <spring:url value="/courses/updateCourse/${course.getId()}" var="updateURL" />
-		       <a class="btn btn-warning" href="${updateURL}" role="button" >Update</a>
+		       <a class="btn btn-warning" href="${updateURL}" role="button" ><i class="far fa-edit"></i></a>
 		      </td>
 		      <td>
 		       <spring:url value="/courses/deleteCourse/${course.getId()}" var="deleteURL" />
-		       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" >Delete</a>
+		       <a class="btn btn-danger" onclick="return confirm('Are you sure, you want to delete this item?');" href="${deleteURL}" role="button" ><i class="fas fa-trash-alt"></i></a>
 		      </td>
 		     </tr>
 		    </c:forEach>

@@ -26,23 +26,23 @@
   <form:form modelAttribute="client" method="post" action="${addURL }" cssClass="form" >
    <div class="form-group col-sm-5">
     <label>First Name : </label>
-    <form:input path="firstName" cssClass="form-control" id="firstName" />
+    <form:input path="firstName" cssClass="form-control" id="firstName" required="required"/>
    </div>
    <div class="form-group col-sm-5">
     <label> Last Name : </label>
-    <form:input path="lastName" cssClass="form-control" id="lastName" />
+    <form:input path="lastName" cssClass="form-control" id="lastName" required="required" />
    </div>
    <div class="form-group col-sm-5">
     <label> Email : </label>
-    <form:input path="email" cssClass="form-control" id="email" />
+    <form:input path="email" cssClass="form-control" id="email" required="required" />
    </div>
    <div class="form-group col-sm-5">
     <label> Address : </label>
-    <form:input path="address" cssClass="form-control" id="address" />
+    <form:input path="address" cssClass="form-control" id="address" required="required" />
    </div>
    <div class="form-group col-sm-5">
     <label> Phone : </label>
-    <form:input path="phone" cssClass="form-control" id="phone" />
+    <form:input path="phone" cssClass="form-control" id="phone" required="required" />
    </div>
    <button type="submit" class="btn btn-success">Apply</button>
   </form:form>
