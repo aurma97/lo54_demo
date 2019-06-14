@@ -66,14 +66,17 @@
         });
          $('#tableClients').DataTable({
             "pageLength": 8,
+            "searching": false,
             "bLengthChange" : false
         });
          $('#tableLocations').DataTable({
             "pageLength": 8,
+            "searching": false,
             "bLengthChange" : false
         });
          $('#tableCourses').DataTable({
             "pageLength": 8,
+            "searching": false,
             "bLengthChange" : false
         });
     });
