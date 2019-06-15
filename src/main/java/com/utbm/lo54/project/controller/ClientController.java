@@ -30,7 +30,6 @@ public class ClientController {
     	List<Client> clients = clientService.getAllClients();
         //Envoi de tous les cours à la vue
         ModelAndView model = new ModelAndView("body/clients/all");
-        
         //Ajout de l'objet courseSession pour afficher tous ces informations en fonction de l'id du client
         model.addObject("courseSessionService", courseSessionService);
         model.addObject("clients", clients);
@@ -88,6 +87,7 @@ public class ClientController {
     //Suppression d'un Client
     @RequestMapping(method = RequestMethod.GET, value = "/client/deleteClient/{id}")
     public ModelAndView deleteClient(@PathVariable Integer id) {
+  
         clientService.deleteClient(id);
         return new ModelAndView("redirect:/clients");
     }

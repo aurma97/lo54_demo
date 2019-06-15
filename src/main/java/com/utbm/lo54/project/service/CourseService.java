@@ -37,4 +37,10 @@ public class CourseService {
     public void deleteCourse(Integer id) {
         courseRepository.deleteById(id);
     }
+    //Retourne le nombre de clients
+    public Integer numCourse(){
+        List<Course> course = new ArrayList<>();
+        courseRepository.findAll().forEach(course::add);
+        return course.size();
+    }
 }

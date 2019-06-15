@@ -1,5 +1,11 @@
 <%@ include file="../../header/header.jsp"%>
       <div class="container-fluid">
+           <c:if test="${error == false }">
+	   	<div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Danger!</strong> Can not delete this course because registered session(s).
+                </div>
+            </c:if>
           <h2>Course List</h2>
 		  <table class="table table-striped" id="tableCourses">
 		   <thead>

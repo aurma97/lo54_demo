@@ -37,4 +37,10 @@ public class LocationService {
     public void deleteLocation(Integer id) {
     	locationRepository.deleteById(id);
     }
+    //Retourne le nombre de location
+    public Integer numLocation(){
+        List<Location> location = new ArrayList<>();
+        locationRepository.findAll().forEach(location::add);
+        return location.size();
+    }
 }

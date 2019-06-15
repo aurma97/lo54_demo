@@ -1,7 +1,12 @@
 <%@ include file="../../header/header.jsp"%>
       <div class="container-fluid">
+            <c:if test="${error == false }">
+	   	<div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Danger!</strong> Can not delete this session because registered users.
+                </div>
+            </c:if>
 		<h2>Session List</h2>
-		
 		<hr>
 		<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
 			Advanced search
@@ -11,14 +16,14 @@
 		<div class="collapse" id="collapseExample">
 				<table class="table table-striped">
 						<tbody>
-								<td scope="row"><input type="text" id="courseTitle" onkeyup="courseTitleSearch()"  placeholder="Search by title"></td>
-								<td scope="row"><input type="text" id="startDate" onkeydown="startDateSearch()" placeholder="Search by startDate"></td>
-								<td scope="row"><input type="text" id="endDate" onkeydown="endDateSearch()" placeholder="Search by endDate"></td>
-								<td scope="row"><input type="text" id="max" onkeyup="maxSearch()" placeholder="Search by max"></td>
-								<td scope="row"><input type="text" id="participants" onkeyup="participantsSearch()" placeholder="Search by participants"></td>
-								<td scope="row"><input type="text" id="percentage" onkeyup="percentageSearch()" placeholder="Search by percentage"></td>
-								<td scope="row"></td>
-								<td scope="row"></td>
+                                                    <td scope="row"><input type="text" id="courseTitle" onkeyup="courseTitleSearch()"  placeholder="Search by title"></td>
+                                                    <td scope="row"><input type="text" id="startDate" onkeydown="startDateSearch()" placeholder="Search by startDate"></td>
+                                                    <td scope="row"><input type="text" id="endDate" onkeydown="endDateSearch()" placeholder="Search by endDate"></td>
+                                                    <td scope="row"><input type="text" id="max" onkeyup="maxSearch()" placeholder="Search by max"></td>
+                                                    <td scope="row"><input type="text" id="participants" onkeyup="participantsSearch()" placeholder="Search by participants"></td>
+                                                    <td scope="row"><input type="text" id="percentage" onkeyup="percentageSearch()" placeholder="Search by percentage"></td>
+                                                    <td scope="row"></td>
+                                                    <td scope="row"></td>
 						</tbody>
 				</table>
 		</div>

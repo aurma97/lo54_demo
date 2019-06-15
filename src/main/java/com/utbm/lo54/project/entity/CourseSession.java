@@ -23,7 +23,7 @@ public class CourseSession {
     private Integer max;
     
     @Column
-    private Float busy;
+    private String busy;
     
     @Column
     private Long participants;
@@ -132,10 +132,10 @@ public class CourseSession {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-	public Float getBusy() {
+	public String getBusy() {
 		return busy;
 	}
-	public void setBusy(Float busy) {
+	public void setBusy(String busy) {
 		this.busy = busy;
 	}
 	public Long getParticipants() {

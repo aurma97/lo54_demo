@@ -45,4 +45,10 @@ public class ClientService {
     public List<Client> findByCourseSession(CourseSession cs){
     	return clientRepository.findByCourseSession(cs);
     }
+    //Retourne le nombre de clients
+    public Integer numClient(){
+        List<Client> client = new ArrayList<>();
+        clientRepository.findAll().forEach(client::add);
+        return client.size();
+    }
 }

@@ -12,6 +12,7 @@
  <!-- Custom styles for this template -->
  <link href="../../../resources/css/simple-sidebar.css" rel="stylesheet">
  <link href="../../../resources/css/jquery.datetimepicker.min.css" rel="stylesheet">
+ <link href="../../../resources/css/sb-admin-2.min.css" rel="stylesheet">
  <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
 

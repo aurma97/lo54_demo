@@ -1,5 +1,6 @@
 package com.utbm.lo54.project.service;
 
+import com.utbm.lo54.project.entity.Course;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,5 +36,11 @@ public class CourseSessionService {
 
     public void deleteCourseSession(Integer id) {
     	courseSessionRepository.deleteById(id);
+    }
+    //Retourne le nombre de clients
+    public Integer numSession(){
+        List<CourseSession> courseSession = new ArrayList<>();
+        courseSessionRepository.findAll().forEach(courseSession::add);
+        return courseSession.size();
     }
 }

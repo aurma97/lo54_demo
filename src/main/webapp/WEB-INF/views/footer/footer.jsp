@@ -26,11 +26,11 @@
              months:[
               'January','February','März','April',
               'May','June','July','August',
-              'September','October','November','December',
+              'September','October','November','December'
              ],
              dayOfWeek:[
               "So.", "Mo", "Tu", "We", 
-              "Th", "Fr", "Sa.",
+              "Th", "Fr", "Sa."
              ]
             }
            },
