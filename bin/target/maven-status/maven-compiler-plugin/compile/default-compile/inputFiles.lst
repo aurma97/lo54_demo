@@ -8,6 +8,7 @@
 /home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/service/ClientService.java
 /home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/service/LocationService.java
 /home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/entity/Course.java
+/home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/controller/NumberController.java
 /home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/repository/LocationRepository.java
 /home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/repository/CourseRepository.java
 /home/aurma/Documents/myProject/lo54_demo/src/main/java/com/utbm/lo54/project/repository/ClientRepository.java

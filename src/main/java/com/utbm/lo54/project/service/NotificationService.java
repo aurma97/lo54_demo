@@ -1,8 +1,6 @@
 package com.utbm.lo54.project.service;
-
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
@@ -10,7 +8,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import com.utbm.lo54.project.entity.Client;
-
 
 @Service
 public class NotificationService {
