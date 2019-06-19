@@ -19,10 +19,16 @@
                                                     <td scope="row"><input type="text" id="courseTitle" onkeyup="courseTitleSearch()"  placeholder="Search by title"></td>
                                                     <td scope="row"><input type="text" id="startDate" onkeydown="startDateSearch()" placeholder="Search by startDate"></td>
                                                     <td scope="row"><input type="text" id="endDate" onkeydown="endDateSearch()" placeholder="Search by endDate"></td>
-                                                    <td scope="row"><input type="text" id="max" onkeyup="maxSearch()" placeholder="Search by max"></td>
-                                                    <td scope="row"><input type="text" id="participants" onkeyup="participantsSearch()" placeholder="Search by participants"></td>
-                                                    <td scope="row"><input type="text" id="percentage" onkeyup="percentageSearch()" placeholder="Search by percentage"></td>
-                                                    <td scope="row"></td>
+                                                    
+                                                    
+                                                    <td scope="row">
+                                                        <select  class="custom-select" id="location" onclick="locationSearch()">
+                                                            <option>Search by location</option>
+                                                            <c:forEach items="${locations}" var="location">
+                                                                <option  value="${location.getCity()}" >${location.getCity()}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </td>
                                                     <td scope="row"></td>
 						</tbody>
 				</table>
@@ -198,17 +204,17 @@
       }
     }
 
-	function percentageSearch() {
-      // Declare variables 
+    function locationSearch() {
+             // Declare variables 
       var input, filter, table, tr, td, i;
-      input = document.getElementById("percentage");
+      input = document.getElementById("location");
       filter = input.value.toUpperCase();
       table = document.getElementById("tableSessions");
       tr = table.getElementsByTagName("tr");
 
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[5]; //Ici on filtre par Nom
+        td = tr[i].getElementsByTagName("td")[3]; //Ici on filtre par location
         if (td) {
           if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";

@@ -43,6 +43,11 @@ public class CourseSessionController {
     	//Envoi de toutes les sessions � la vue sessions/all
     	ModelAndView model = new ModelAndView("body/sessions/all");
     	model.addObject("sessions", sessions);
+        
+        //Envoi de toutes les locations à la vue
+        List<Location> locations = locationService.getAllLocations();
+        model.addObject("locations", locations);
+        
     	return model;
     }
 
